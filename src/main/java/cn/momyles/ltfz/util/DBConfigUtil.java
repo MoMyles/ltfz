@@ -3,7 +3,9 @@ package cn.momyles.ltfz.util;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * DB≈‰÷√Œƒº˛∂¡»°
  * @author MoMyles
@@ -11,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class DBConfigUtil {
 	
-	private static final Logger log = Logger.getLogger(DBConfigUtil.class);
+	private static final Logger log = LoggerFactory.getLogger(DBConfigUtil.class);
 	
 	private static Properties prop = new Properties();
 	static {
