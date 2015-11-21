@@ -12,6 +12,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 
 import cn.momyles.ltfz.controller.LoginController;
+import cn.momyles.ltfz.controller.WXController;
 import cn.momyles.ltfz.pojo.User;
 /**
  * My JFinal Config Class
@@ -27,7 +28,10 @@ public class MyJFinalConfig extends JFinalConfig {
 	
 	@Override
 	public void configRoute(Routes me) {
+		// µÇÂ¼¿ØÖÆÆ÷
 		me.add("/login", LoginController.class, "/");
+		// Î¢ÐÅ¿ØÖÆÆ÷
+		me.add("/weixin", WXController.class);
 	}
 	
 	@Override
