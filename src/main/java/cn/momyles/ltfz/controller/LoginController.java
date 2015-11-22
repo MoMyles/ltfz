@@ -16,10 +16,11 @@ public class LoginController extends Controller {
 		IProListService ips = new ProListServiceImpl();
 		// 测试新增产品
 		ProList pl = new ProList();
-		pl.set("pl_code", "test").set("pl_class", 1).set("pl_name", "����").set("pl_image", "../img")
-			.set("pl_weight", 1).set("pl_size", 1).set("pl_material", "111").set("pl_desc", "����")
+		pl.set("pl_code", "test1").set("pl_class", 1).set("pl_name", "测试").set("pl_image", "../img")
+			.set("pl_weight", 1).set("pl_size", 1).set("pl_material", "111").set("pl_desc", "册册册册")
 			.set("pl_state", 1);
-		ips.save(pl);
+		//ips.save(pl);
+		System.out.println(ips.findById(4));
 		renderText("新增成功");
 	}
 }
