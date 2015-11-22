@@ -13,7 +13,6 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 
 import cn.momyles.ltfz.controller.LoginController;
 import cn.momyles.ltfz.controller.WXController;
-import cn.momyles.ltfz.pojo.User;
 /**
  * My JFinal Config Class
  * @author MoMyles
@@ -45,8 +44,7 @@ public class MyJFinalConfig extends JFinalConfig {
 				, prop.getInt("acquireIncrement"));
 		me.add(cp);// 添加c3p0插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
-		me.add(arp);
-		arp.addMapping("user", User.class);
+		me.add(arp);// 添加操作记录插件
 	}
 
 	@Override
