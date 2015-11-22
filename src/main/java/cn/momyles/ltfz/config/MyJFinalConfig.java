@@ -13,6 +13,7 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 
 import cn.momyles.ltfz.controller.LoginController;
 import cn.momyles.ltfz.controller.WXController;
+import cn.momyles.ltfz.pojo.ProList;
 /**
  * My JFinal Config Class
  * @author MoMyles
@@ -27,24 +28,27 @@ public class MyJFinalConfig extends JFinalConfig {
 	
 	@Override
 	public void configRoute(Routes me) {
-		// 登录控制器
+		// 鐧诲綍璺敱
 		me.add("/login", LoginController.class, "/");
-		// 微信控制器
+		// 寰俊璺敱
 		me.add("/weixin", WXController.class);
 	}
 	
 	@Override
 	public void configPlugin(Plugins me) {
-		// 读取数据库配置文件
+		// 璇诲彇閰嶇疆鏂囦欢
 		Prop prop = PropKit.use("jdbcConfig.properties");
-		// 将配置参数传入C3p0
+		// 灏嗗弬鏁版斁鍏3p0鏋勯�犲櫒,瀹炰緥鍖朿3pPlugin
 		C3p0Plugin cp = new C3p0Plugin(prop.get("jdbcUrl"), prop.get("user"), prop.get("password")
 				, prop.get("driverClass"), prop.getInt("maxPoolSize"),prop.getInt("minPoolSize")
 				, prop.getInt("initialPoolSize"), prop.getInt("maxIdleTime")
 				, prop.getInt("acquireIncrement"));
-		me.add(cp);// 添加c3p0插件
+		me.add(cp);// 娣诲姞c3p0鎻掍欢
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
-		me.add(arp);// 添加操作记录插件
+		me.add(arp);// 娣诲姞鎿嶄綔璁板綍鎻掍欢
+		//-----琛ㄤ笌妯″瀷鏄犲皠
+		// 浜у搧鍒楄〃鏄犲皠
+		arp.addMapping("product_list", "pl_id", ProList.class);
 	}
 
 	@Override

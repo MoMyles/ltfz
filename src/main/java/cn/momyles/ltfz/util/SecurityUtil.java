@@ -4,14 +4,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * ¼ÓÃÜ½âÃÜ¹¤¾ßÀà
+ * åŠ å¯†å·¥å…·ç±»
  * @author MoMyles
  * @date 2015-11-21
  */
 public class SecurityUtil {
 	/**
-	 * SHA1¼ÓÃÜ
-	 * @param str Ô­ÎÄ
+	 * SHA1å‡é¢
+	 * @param str éœ€è¦åŠ å¯†çš„å­—ç¬¦ä¸²
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */

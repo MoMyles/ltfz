@@ -10,7 +10,7 @@ import com.jfinal.core.Controller;
 
 import cn.momyles.ltfz.util.SecurityUtil;
 /**
- * Î¢ĞÅWeb API
+ * å¾®ä¿¡Web API
  * @author MoMyles
  * @date 2015-11-21
  */
@@ -18,7 +18,7 @@ public class WXController extends Controller {
 	private static final Logger log = LoggerFactory.getLogger(WXController.class);
 	private static final String TOKEN = "ltfz";
 	public void index() {
-		// ÅĞ¶Ïµ±Ç°ÇëÇóÊÇ·ñÎªGETÇëÇó
+		// åˆ¤æ–­æ˜¯å¦ä¸ºGETè¯·æ±‚
 		if ("GET".equals(getRequest().getMethod())) {
 			doGet();
 		} else {
@@ -26,35 +26,35 @@ public class WXController extends Controller {
 		}
 	}
 	/**
-	 * POST,½ÓÊÕÏûÏ¢²¢´¦Àí
+	 * POST,å¾®ä¿¡æ“ä½œå¤„ç†
 	 */
 	private void doPost() {
 		
 	}
 	/**
-	 * GETÇëÇó,½ÓÈëÎ¢ĞÅ
+	 * GETå¾®ä¿¡æ¥å…¥æ“ä½œ
 	 */
 	private void doGet() {
-		// ½ÓÈëURL GETÇëÇó²ÎÊı
+		// å¾®ä¿¡æ¥å…¥URLå‚æ•°
 		String signature = getPara("signature");
 		String timestamp = getPara("timestamp");
 		String nonce = getPara("nonce");
 		String echostr = getPara("echostr");
-		// ½«token¡¢timestamp¡¢nonceÈı¸ö²ÎÊı½øĞĞ×ÖµäĞòÅÅĞò
+		// å°†token,timestamp,onceè¿›è¡Œæ•°å­—å­—å…¸æ’åº
 		String[] arr = new String[] {TOKEN,timestamp, nonce};
 		Arrays.sort(arr);
-		// ½«Èı¸ö²ÎÊı×Ö·û´®Æ´½Ó³ÉÒ»¸ö×Ö·û´®½øĞĞsha1¼ÓÃÜ
+		// sha1åŠ å¯†æ“ä½œ
 		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < arr.length; i++) {// Æ´½Ó×Ö·û´®
+		for (int i = 0; i < arr.length; i++) {// æ‹¼æ¥
 			sb.append(arr[i]);
 		}
 		String CheckStr = "";
 		try {
-			CheckStr = SecurityUtil.encryptionOnSHA1(sb.toString());// SHA1¼ÓÃÜ
+			CheckStr = SecurityUtil.encryptionOnSHA1(sb.toString());// SHA1åŠ å¯†
 		} catch (NoSuchAlgorithmException e) {
-			log.error("¼ÓÃÜ´íÎó");
+			log.error("åŠ å¯†é”™è¯¯");
 		}
-		// ÈôÈ·ÈÏ´Ë´ÎGETÇëÇóÀ´×ÔÎ¢ĞÅ·şÎñÆ÷£¬·µ»Øechostr²ÎÊıÄÚÈİ
+		// è‹¥æ£€æµ‹åˆ°ä¸ºå¾®ä¿¡æ¥å…¥,åˆ™è¿”å›echostr
 		if (CheckStr.equals(signature)) {
 			renderText(echostr);
 		}

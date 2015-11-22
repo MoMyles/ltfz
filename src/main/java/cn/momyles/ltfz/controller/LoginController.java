@@ -1,26 +1,25 @@
 package cn.momyles.ltfz.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfinal.core.Controller;
 
+import cn.momyles.ltfz.pojo.ProList;
+import cn.momyles.ltfz.service.IProListService;
+import cn.momyles.ltfz.service.impl.ProListServiceImpl;
+
 public class LoginController extends Controller {
-	// ��¼��־��Ϣ
+	// 日志输出对象
 	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 	public void index() {
-		setAttr("name", null);
-		List<Integer> list = new ArrayList<Integer>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.add(6);
-		setAttr("list", list);
-		renderFreeMarker("index.flt");
+		IProListService ips = new ProListServiceImpl();
+		// 测试新增产品
+		ProList pl = new ProList();
+		pl.set("pl_code", "test").set("pl_class", 1).set("pl_name", "����").set("pl_image", "../img")
+			.set("pl_weight", 1).set("pl_size", 1).set("pl_material", "111").set("pl_desc", "����")
+			.set("pl_state", 1);
+		ips.save(pl);
+		renderText("新增成功");
 	}
 }

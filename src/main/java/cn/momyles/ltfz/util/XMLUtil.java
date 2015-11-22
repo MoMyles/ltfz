@@ -13,30 +13,30 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 /**
- * XML²Ù×÷¹¤¾ßÀà
+ * XMLæ“ä½œå·¥å…·ç±»
  * @author MoMyles
  * @date 2015-11-20 09:07
  */
 public class XMLUtil {
 	/**
-	 * ½«XMLĞÅÏ¢×ª»»ÎªMap
-	 * @param request HttpServletRequestÇëÇó
+	 * å°†XMLæ–‡ä»¶å­˜å‚¨åˆ°Mapä¸­
+	 * @param request HttpServletRequestå¯¹è±¡
 	 * @return
 	 * @throws DocumentException
 	 * @throws IOException
 	 */
 	public static Map<String, String> xmlToMap(HttpServletRequest request) throws DocumentException
 	, IOException {
-		Map<String, String> map = new HashMap<String, String>();// xml×ª»»Ö®ºóµÄ´æ´¢¶ÔÏó
-		SAXReader reader = new SAXReader();// ¶ÁÈ¡XMLĞÅÏ¢Àà
-		InputStream is = request.getInputStream();// »ñµÃÎÄ¼şÁ÷
-		Document document = reader.read(is);// »ñÈ¡ÎÄ±¾¶ÔÏó
-		Element root = document.getRootElement();// »ñÈ¡¸ùÔªËØ
-		List<Element> eles = root.elements();// »ñÈ¡¸ù½ÚµãÏÂµÄËùÓĞÔªËØ
-		for (Element e : eles) {// µü´úËùÓĞÔªËØ
-			map.put(e.getName(), e.getText());// ½«ÔªËØµÄ±êÇ©Ãû¼°ÄÚÈİ´æÈëmapÖĞ
+		Map<String, String> map = new HashMap<String, String>();// xmlå­˜å‚¨å¯¹è±¡
+		SAXReader reader = new SAXReader();// XMLè¯»å–å¯¹è±¡
+		InputStream is = request.getInputStream();// è·å–è¯·æ±‚æµ
+		Document document = reader.read(is);// è¯»å–
+		Element root = document.getRootElement();// è·å¾—æ ¹èŠ‚ç‚¹
+		List<Element> eles = root.elements();// è·å¾—æ ¹èŠ‚ç‚¹ä¸‹çš„æ‰€æœ‰å†…å®¹
+		for (Element e : eles) {// è¿­ä»£æ‰€æœ‰å…ƒç´ 
+			map.put(e.getName(), e.getText());// å°†å…ƒç´ çš„åç§°åŠå†…å®¹å­˜å…¥Map
 		}
-		is.close();// ¹Ø±Õ¶ÁÈ¡Á÷
+		is.close();// å…³é—­æµ
 		return map;
 	}
 }
