@@ -1,14 +1,26 @@
 package cn.momyles.ltfz.controller;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.jfinal.core.Controller;
 
+import cn.momyles.ltfz.pojo.ProList;
+import cn.momyles.ltfz.service.IProListService;
+import cn.momyles.ltfz.service.impl.ProListServiceImpl;
+
 public class LoginController extends Controller {
-	// 记录日志信息
-	private static final Logger log = Logger.getLogger(LoginController.class);
+	// 鏃ュ織杈撳嚭瀵硅薄
+	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 	public void index() {
-		log.warn(new String("Hello SomeBody My Log4j!"));
-		renderText("Hello My First JFinal!");
+		IProListService ips = new ProListServiceImpl();
+		// 娴嬭瘯鏂板浜у搧
+		ProList pl = new ProList();
+		pl.set("pl_code", "test1").set("pl_class", 1).set("pl_name", "娴嬭瘯").set("pl_image", "../img")
+			.set("pl_weight", 1).set("pl_size", 1).set("pl_material", "111").set("pl_desc", "鍐屽唽鍐屽唽")
+			.set("pl_state", 1);
+		//ips.save(pl);
+		System.out.println(ips.findById(4));
+		renderText("鏂板鎴愬姛");
 	}
 }
